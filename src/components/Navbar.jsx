@@ -125,7 +125,7 @@ export default function Navbar() {
                             <div className="flex items-center gap-3">
                                 <div className="relative">
                                     <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300">
-                                        <Sparkles className="w-5 h-5 text-white group-hover:animate-spin" />
+                                        <img src='/favicon.svg' className="w-8 h-8 text-white group-hover:animate-spin" />
                                     </div>
                                     <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-300"></div>
                                 </div>
@@ -150,7 +150,7 @@ export default function Navbar() {
                                         <button
                                             key={item.id}
                                             onClick={() => scrollToSection(item.id)}
-                                            className={`group relative flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium ${isActive
+                                            className={`group relative flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium cursor-pointer ${isActive
                                                 ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg shadow-purple-500/25'
                                                 : 'text-gray-300 hover:text-white hover:bg-white/10'
                                                 }`}
@@ -173,7 +173,7 @@ export default function Navbar() {
                         <div className="hidden lg:block">
                             <button
                                 onClick={() => scrollToSection('contact')}
-                                className="group relative px-6 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-xl font-medium transition-all duration-300 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:scale-105"
+                                className="group relative px-6 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-xl font-medium transition-all duration-300 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:scale-105 cursor-pointer"
                             >
                                 <span className="relative z-10 flex items-center gap-2">
                                     <Mail className="w-4 h-4" />
