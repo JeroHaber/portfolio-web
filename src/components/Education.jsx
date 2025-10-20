@@ -23,12 +23,12 @@ export default function Education() {
             year: "2023 - 2025",
             description: "Aprendí a desarrollar soluciones de software eficientes, trabajando con distintos lenguajes y tecnologías, y aplicando metodologías de programación profesional.",
             type: "university",
-            skills: ["C++", "Algoritmos  y Estructuras de Datos", "Java", "PHP", "C#", "Bases de Datos", "SQL", "Python", "React"],
+            skills: ["C++", "Algoritmos y Estructuras de Datos", "Java", "PHP", "C#", "Bases de Datos", "SQL", "Python", "React"],
             color: "from-blue-600 to-cyan-600"
         },
         {
             id: 3,
-            title: "Diplomatura en Vinculacion en Inteligencia Artificial",
+            title: "Diplomatura en Vinculación en Inteligencia Artificial",
             institution: "Universidad Nacional Arturo Jauretche",
             year: "2025 - En curso",
             description: "Formación avanzada en conceptos y aplicaciones de inteligencia artificial, incluyendo aprendizaje automático, procesamiento de lenguaje natural y visión por computadora.",
@@ -70,25 +70,28 @@ export default function Education() {
 
             <div className="relative z-10 max-w-6xl mx-auto px-6">
                 {/* Título principal */}
-                <div className="text-center mb-20">
-                    <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
-                        <GraduationCap className="w-6 h-6 text-purple-400" />
-                        <span className="text-purple-300 font-medium">Mi Trayectoria Académica</span>
+                <div className="text-center mb-12 md:mb-20">
+                    <div className="inline-flex items-center gap-3 px-4 md:px-6 py-2 md:py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4 md:mb-6">
+                        <GraduationCap className="w-5 h-5 md:w-6 md:h-6 text-purple-400" />
+                        <span className="text-sm md:text-base text-purple-300 font-medium">Mi Trayectoria Académica</span>
                     </div>
-                    <h2 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-blue-200 mb-6">
+                    <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-blue-200 mb-4 md:mb-6">
                         Educación
                     </h2>
-                    <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-base md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed px-4">
                         Un viaje continuo de aprendizaje y crecimiento profesional
                     </p>
                 </div>
 
                 {/* Línea de tiempo */}
                 <div className="relative">
-                    {/* Línea vertical principal con gradiente */}
-                    <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-500 via-blue-500 to-purple-500 rounded-full shadow-lg shadow-purple-500/25"></div>
+                    {/* Línea vertical para desktop, oculta en mobile */}
+                    <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-500 via-blue-500 to-purple-500 rounded-full shadow-lg shadow-purple-500/25"></div>
 
-                    <div className="space-y-24">
+                    {/* Línea vertical para mobile - a la izquierda */}
+                    <div className="md:hidden absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-blue-500 to-purple-500 rounded-full"></div>
+
+                    <div className="space-y-12 md:space-y-24">
                         {education.map((edu, index) => (
                             <div
                                 key={edu.id}
@@ -98,9 +101,10 @@ export default function Education() {
                                     }`}
                                 style={{ transitionDelay: `${index * 200}ms` }}
                             >
-                                <div className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+                                {/* Layout Desktop (zigzag) */}
+                                <div className={`hidden md:flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
                                     }`}>
-                                    {/* Contenedor del contenido */}
+                                    {/* Contenedor del contenido Desktop */}
                                     <div className="w-5/12 relative">
                                         <div
                                             className={`group relative p-8 rounded-2xl backdrop-blur-sm border transition-all duration-500 hover:scale-105 cursor-pointer ${hoveredItem === index
@@ -116,27 +120,27 @@ export default function Education() {
                                             {/* Contenido principal */}
                                             <div className="relative z-10">
                                                 <div className="flex items-start gap-4 mb-4">
-                                                    <div className={`p-3 rounded-xl bg-gradient-to-r ${edu.color} shadow-lg`}>
+                                                    <div className={`p-3 rounded-xl bg-gradient-to-r ${edu.color} shadow-lg flex-shrink-0`}>
                                                         {getIcon(edu.type)}
                                                     </div>
-                                                    <div className="flex-1">
+                                                    <div className="flex-1 min-w-0">
                                                         <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-200 group-hover:to-blue-200 transition-all duration-300">
                                                             {edu.title}
                                                         </h3>
-                                                        <div className="flex items-center gap-4 text-gray-300 mb-1">
+                                                        <div className="flex items-center gap-4 text-gray-300 mb-1 flex-wrap">
                                                             <div className="flex items-center gap-2">
-                                                                <MapPin className="w-4 h-4" />
-                                                                <span className="font-medium">{edu.institution}</span>
+                                                                <MapPin className="w-4 h-4 flex-shrink-0" />
+                                                                <span className="font-medium text-sm">{edu.institution}</span>
                                                             </div>
                                                         </div>
                                                         <div className="flex items-center gap-2 text-gray-400">
-                                                            <Calendar className="w-4 h-4" />
-                                                            <span>{edu.year}</span>
+                                                            <Calendar className="w-4 h-4 flex-shrink-0" />
+                                                            <span className="text-sm">{edu.year}</span>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <p className="text-gray-300 leading-relaxed mb-6">
+                                                <p className="text-gray-300 leading-relaxed mb-6 text-sm">
                                                     {edu.description}
                                                 </p>
 
@@ -155,7 +159,7 @@ export default function Education() {
                                         </div>
                                     </div>
 
-                                    {/* Espacio central */}
+                                    {/* Espacio central Desktop */}
                                     <div className="w-2/12 flex justify-center">
                                         {/* Nodo central animado */}
                                         <div className="relative">
@@ -165,8 +169,72 @@ export default function Education() {
                                         </div>
                                     </div>
 
-                                    {/* Espacio derecho/izquierdo */}
+                                    {/* Espacio derecho/izquierdo Desktop */}
                                     <div className="w-5/12"></div>
+                                </div>
+
+                                {/* Layout Mobile (lista vertical) */}
+                                <div className="md:hidden flex items-start gap-4 pl-12">
+                                    {/* Nodo de la línea de tiempo Mobile */}
+                                    <div className="absolute left-6 transform -translate-x-1/2">
+                                        <div className={`w-4 h-4 rounded-full bg-gradient-to-r ${edu.color} shadow-lg`}></div>
+                                        <div className={`absolute inset-0 w-4 h-4 rounded-full bg-gradient-to-r ${edu.color} animate-ping opacity-20`}></div>
+                                    </div>
+
+                                    {/* Contenido Mobile */}
+                                    <div className="flex-1">
+                                        <div
+                                            className={`group relative p-6 rounded-2xl backdrop-blur-sm border transition-all duration-500 ${hoveredItem === index
+                                                ? 'bg-white/15 border-white/30 shadow-2xl shadow-purple-500/25'
+                                                : 'bg-white/10 border-white/20'
+                                                }`}
+                                            onTouchStart={() => setHoveredItem(index)}
+                                            onTouchEnd={() => setHoveredItem(null)}
+                                        >
+                                            {/* Indicador de gradiente */}
+                                            <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${edu.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+
+                                            {/* Contenido Mobile */}
+                                            <div className="relative z-10">
+                                                <div className="flex items-start gap-3 mb-4">
+                                                    <div className={`p-2.5 rounded-xl bg-gradient-to-r ${edu.color} shadow-lg flex-shrink-0`}>
+                                                        {getIcon(edu.type)}
+                                                    </div>
+                                                    <div className="flex-1 min-w-0">
+                                                        <h3 className="text-lg font-bold text-white mb-2 leading-tight">
+                                                            {edu.title}
+                                                        </h3>
+                                                        <div className="space-y-1">
+                                                            <div className="flex items-center gap-2 text-gray-300">
+                                                                <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
+                                                                <span className="font-medium text-xs">{edu.institution}</span>
+                                                            </div>
+                                                            <div className="flex items-center gap-2 text-gray-400">
+                                                                <Calendar className="w-3.5 h-3.5 flex-shrink-0" />
+                                                                <span className="text-xs">{edu.year}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <p className="text-gray-300 leading-relaxed mb-4 text-sm">
+                                                    {edu.description}
+                                                </p>
+
+                                                {/* Skills badges Mobile */}
+                                                <div className="flex flex-wrap gap-2">
+                                                    {edu.skills.map((skill, skillIndex) => (
+                                                        <span
+                                                            key={skillIndex}
+                                                            className="px-2.5 py-1 text-xs font-medium bg-white/20 backdrop-blur-sm rounded-full border border-white/30 text-white"
+                                                        >
+                                                            {skill}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -174,10 +242,10 @@ export default function Education() {
                 </div>
 
                 {/* Call to action */}
-                <div className="text-center mt-20">
-                    <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:scale-105 cursor-pointer group">
-                        <Sparkles className="w-5 h-5 text-white group-hover:animate-spin" />
-                        <span className="text-white font-semibold">Continúo Aprendiendo</span>
+                <div className="text-center mt-12 md:mt-20">
+                    <div className="inline-flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:scale-105 cursor-pointer group">
+                        <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-white group-hover:animate-spin" />
+                        <span className="text-white font-semibold text-sm md:text-base">Continúo Aprendiendo</span>
                     </div>
                 </div>
             </div>
